@@ -1,0 +1,20 @@
+name: Verify build
+description: ''
+
+runs:
+  using: 'composite'
+  steps:
+    - name: Checkout source code
+      uses: actions/checkout@v4
+
+    - name: Install SAP CDS Development Kit (CDS-DK, TS-NODE, TYPESCRIPT)
+      run: npm i -g @sap/cds-dk ts-node typescript
+      shell: bash
+
+    - name: Install project dependencies
+      run: npm install
+      shell: bash
+
+    - name: Run project build
+      run: npm run build
+      shell: bash
